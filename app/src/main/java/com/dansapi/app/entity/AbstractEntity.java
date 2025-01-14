@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @MappedSuperclass
 public abstract class AbstractEntity {
     @Id
@@ -15,5 +17,10 @@ public abstract class AbstractEntity {
     @Getter @Setter
     @Column(name = "ativo", nullable = false)
     private boolean ativo;
+
+    @Getter @Setter
+    @Column(name = "registro", nullable = false)
+    private LocalDateTime registro;
+
 
 }
