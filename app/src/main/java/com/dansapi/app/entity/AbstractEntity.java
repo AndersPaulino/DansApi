@@ -25,4 +25,14 @@ public abstract class AbstractEntity {
     @Getter @Setter
     @Column(name = "atualizar")
     private LocalDateTime atualizar;
+
+    @PrePersist
+    void prePersist(){
+        this.registro = LocalDateTime.now();
+        this.ativo = true;
+    }
+    @PreUpdate
+    void preUpdate(){
+        this.atualizar = LocalDateTime.now();
+    }
 }
