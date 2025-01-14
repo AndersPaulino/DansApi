@@ -1,4 +1,4 @@
-package com.dansapi.app;
+package com.dansapi.app.service;
 
 import com.dansapi.app.repository.EstoqueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
