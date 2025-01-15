@@ -72,4 +72,10 @@ public class EstoqueService {
             throw new IllegalArgumentException("Nome do EStoque inválido!");
         }
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void cadastrar(Estoque estoque){
+        validarEstoque(estoque);
+        estoqueRepository.save(estoque);
+    }
 }
