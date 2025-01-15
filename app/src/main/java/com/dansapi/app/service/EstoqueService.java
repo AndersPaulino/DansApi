@@ -60,4 +60,16 @@ public class EstoqueService {
                 .map(EstoqueDTO::new)
                 .toList();
     }
+
+    public void validarEstoque(final Estoque estoque){
+        String nomeEstoque = estoque.getNomeEstoque();
+
+        if (nomeEstoque == null || nomeEstoque.isEmpty()){
+            throw new IllegalArgumentException("Nome do Estoque não informado!");
+        }
+
+        if (!nomeEstoque.matches("[a-zA-Z0-9 ]+")){
+            throw new IllegalArgumentException("Nome do EStoque inválido!");
+        }
+    }
 }
