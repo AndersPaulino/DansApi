@@ -46,6 +46,14 @@ public class EstoqueService {
     }
 
     @Transactional(readOnly = true)
+    public List<EstoqueDTO> findByDiaRegistro(LocalDate registro){
+        List<Estoque> estoques = estoqueRepository.findByDiaRegistro(registro);
+        return estoques.stream()
+                .map(EstoqueDTO::new)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
     public List<EstoqueDTO> findByDiaAtualizar(LocalDate atualizar){
         List<Estoque> estoques = estoqueRepository.findByDiaAtualizar(atualizar);
         return estoques.stream()
