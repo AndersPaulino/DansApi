@@ -36,4 +36,11 @@ public class EstoqueService {
         return new EstoqueDTO(estoque);
     }
 
+    @Transactional(readOnly = true)
+    public List<EstoqueDTO> findByAtivo(boolean ativo){
+        List<Estoque> estoques = estoqueRepository.findByAtivo(ativo);
+        return estoques.stream()
+                .map(EstoqueDTO::new)
+                .toList();
+    }
 }
