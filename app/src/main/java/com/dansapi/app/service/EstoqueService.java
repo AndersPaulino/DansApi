@@ -101,4 +101,16 @@ public class EstoqueService {
             throw new IllegalArgumentException("ID de estoque inválido!");
         }
     }
+
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRES_NEW)
+    public void deletar(Long id) {
+        Optional<Estoque> estoqueExistenteOptional = estoqueRepository.findById(id);
+
+        if (estoqueExistenteOptional.isPresent()) {
+            Estoque estoqueExistente = estoqueExistenteOptional.get();
+            estoqueExistente.setAtivo(false);
+        } else {
+            throw new IllegalArgumentException("ID de estoque inválido!");
+        }
+    }
 }
