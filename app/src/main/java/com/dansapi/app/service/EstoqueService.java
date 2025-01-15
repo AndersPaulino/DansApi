@@ -93,7 +93,7 @@ public class EstoqueService {
             if (estoque.getMovimentacao() != null && !estoque.getMovimentacao().isEmpty()) {
                 estoqueExistente.getMovimentacao().clear();
 
-                estoqueExistente.getMovimentacao().addAll(estoque.getMovimentacao())
+                estoqueExistente.getMovimentacao().addAll(estoque.getMovimentacao());
             }
             estoqueExistente.setAtualizar(LocalDateTime.now());
             estoqueRepository.save(estoqueExistente);
