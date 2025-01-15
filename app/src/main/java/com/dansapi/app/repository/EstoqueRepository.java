@@ -8,9 +8,10 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public interface EstoqueRepository extends JpaRepository<Long, Estoque> {
+public interface EstoqueRepository extends JpaRepository<Estoque, Long> {
     @Query("SELECT e FROM Estoque e WHERE e.nomeEstoque = :nomeEstoque")
     public Estoque findByNomeEstoque(@Param("nomeEstoque") String nomeEstoque);
 

@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface ProdutoRepository extends JpaRepository<Long, Produto> {
+public interface ProdutoRepository extends JpaRepository<Produto, Long> {
     @Query("SELECT e FROM Produto e WHERE e.nome = :nome")
     public Produto findByNomeProduto(@Param("nome") String nome);
 

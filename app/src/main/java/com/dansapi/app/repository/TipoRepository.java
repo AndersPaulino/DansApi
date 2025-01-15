@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface TipoRepository extends JpaRepository<Long, Tipo> {
+public interface TipoRepository extends JpaRepository<Tipo, Long> {
     @Query("SELECT e FROM Tipo e WHERE e.nome= :nome")
     public Tipo findByNomeTipo(@Param("nome") String nome);
     @Query("SELECT e FROM Tipo e WHERE e.ativo = :ativo")
