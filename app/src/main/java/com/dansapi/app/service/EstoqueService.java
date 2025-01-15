@@ -30,4 +30,10 @@ public class EstoqueService {
         return estoques.stream().map(EstoqueDTO::new).toList();
     }
 
+    @Transactional(readOnly = true)
+    public EstoqueDTO findByNomeEstoque(String nomeEstoque){
+        Estoque estoque = estoqueRepository.findByNomeEstoque(nomeEstoque);
+        return new EstoqueDTO(estoque);
+    }
+
 }
