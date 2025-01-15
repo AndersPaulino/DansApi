@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,6 +40,14 @@ public class EstoqueService {
     @Transactional(readOnly = true)
     public List<EstoqueDTO> findByAtivo(boolean ativo){
         List<Estoque> estoques = estoqueRepository.findByAtivo(ativo);
+        return estoques.stream()
+                .map(EstoqueDTO::new)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<EstoqueDTO> findByDiaAtualizar(LocalDate atualizar){
+        List<Estoque> estoques = estoqueRepository.findByDiaAtualizar(atualizar);
         return estoques.stream()
                 .map(EstoqueDTO::new)
                 .toList();
