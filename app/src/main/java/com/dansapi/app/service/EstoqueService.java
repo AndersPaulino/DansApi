@@ -5,9 +5,11 @@ import com.dansapi.app.entity.Estoque;
 import com.dansapi.app.repository.EstoqueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -77,5 +79,26 @@ public class EstoqueService {
     public void cadastrar(Estoque estoque){
         validarEstoque(estoque);
         estoqueRepository.save(estoque);
+    }
+
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRES_NEW)
+    public void atualizar(Long id, Estoque estoque){
+        validarEstoque(estoque);
+        Optional<Estoque> estoqueExistenteOptional = estoqueRepository.findById(id);
+
+        if (estoqueExistenteOptional.isPresent()) {
+            Estoque estoqueExistente = estoqueExistenteOptional.get();
+            estoqueExistente.setNomeEstoque(estoque.getNomeEstoque());
+
+            if (estoque.getMovimentacao() != null && !estoque.getMovimentacao().isEmpty()) {
+                estoqueExistente.getMovimentacao().clear();
+
+                estoqueExistente.getMovimentacao().addAll(estoque.getMovimentacao())
+            }
+            estoqueExistente.setAtualizar(LocalDateTime.now());
+            estoqueRepository.save(estoqueExistente);
+        } else {
+            throw new IllegalArgumentException("ID de estoque inválido!");
+        }
     }
 }
