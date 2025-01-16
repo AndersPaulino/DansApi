@@ -12,4 +12,12 @@ public class Tipo extends AbstractEntity{
     @Getter @Setter
     @Column(name = "cl_tipo")
     private String nomeTipo;
+
+    public String getNomeTipo() {
+        return nomeTipo;
+    }
+
+    public void setNomeTipo(String nomeTipo) {
+        this.nomeTipo = nomeTipo;
+    }
 }

@@ -39,4 +39,60 @@ public class Movimentacao extends AbstractEntity{
     @Getter @Setter
     @Column(name = "valorTotal", nullable = false)
     private BigDecimal valorTotal;
+
+    public Produto getProdutos() {
+        return produtos;
+    }
+
+    public int getEntrada() {
+        return entrada;
+    }
+
+    public int getSaida() {
+        return saida;
+    }
+
+    public int getTotalProduto() {
+        return totalProduto;
+    }
+
+    public BigDecimal getValorCompra() {
+        return valorCompra;
+    }
+
+    public BigDecimal getValorVenda() {
+        return valorVenda;
+    }
+
+    public BigDecimal getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setProdutos(Produto produtos) {
+        this.produtos = produtos;
+    }
+
+    public void setEntrada(int entrada) {
+        this.entrada = entrada;
+    }
+
+    public void setSaida(int saida) {
+        this.saida = saida;
+    }
+
+    public void setTotalProduto(int totalProduto) {
+        this.totalProduto = totalProduto;
+    }
+
+    public void setValorCompra(BigDecimal valorCompra) {
+        this.valorCompra = valorCompra;
+    }
+
+    public void setValorVenda(BigDecimal valorVenda) {
+        this.valorVenda = valorVenda;
+    }
+
+    public void setValorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
+    }
 }

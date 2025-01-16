@@ -11,8 +11,8 @@ import java.util.List;
 
 @Repository
 public interface TipoRepository extends JpaRepository<Tipo, Long> {
-    @Query("SELECT e FROM Tipo e WHERE e.nome= :nome")
-    public Tipo findByNomeTipo(@Param("nome") String nome);
+    @Query("SELECT e FROM Tipo e WHERE e.nomeTipo = :nomeTipo")
+    public Tipo findByNomeTipo(@Param("nome") String nomeTipo);
     @Query("SELECT e FROM Tipo e WHERE e.ativo = :ativo")
     public List<Tipo> findByAtivo(@Param("ativo")boolean ativo);
     @Query("SELECT e FROM Tipo e WHERE DATE(e.registro) = :registro")

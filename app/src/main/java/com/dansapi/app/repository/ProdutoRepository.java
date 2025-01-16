@@ -11,8 +11,8 @@ import java.util.List;
 
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
-    @Query("SELECT e FROM Produto e WHERE e.nome = :nome")
-    public Produto findByNomeProduto(@Param("nome") String nome);
+    @Query("SELECT e FROM Produto e WHERE e.nomeProduto = :nomeProduto")
+    public Produto findByNomeProduto(@Param("nome") String nomeProduto);
 
     @Query("SELECT e FROM Produto e WHERE e.ativo = :ativo")
     public List<Produto> findByAtivo(@Param("ativo")boolean ativo);

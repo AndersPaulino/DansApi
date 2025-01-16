@@ -20,4 +20,28 @@ public class Produto extends AbstractEntity{
     @Getter @Setter
     @Column(name = "cl_descricao", nullable = false, length = 255)
     private String descricao;
+
+    public String getNomeProduto() {
+        return nomeProduto;
+    }
+
+    public Tipo getTipo() {
+        return tipo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
+    }
+
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 }

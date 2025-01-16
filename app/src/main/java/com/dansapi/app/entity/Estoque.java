@@ -21,4 +21,20 @@ public class Estoque extends AbstractEntity{
             inverseJoinColumns = @JoinColumn(name = "movimentacao_id")
     )
     private List<Movimentacao> movimentacao = new ArrayList<>();
+
+    public String getNomeEstoque() {
+        return nomeEstoque;
+    }
+
+    public List<Movimentacao> getMovimentacao() {
+        return movimentacao;
+    }
+
+    public void setNomeEstoque(String nomeEstoque) {
+        this.nomeEstoque = nomeEstoque;
+    }
+
+    public void setMovimentacao(List<Movimentacao> movimentacao) {
+        this.movimentacao = movimentacao;
+    }
 }
